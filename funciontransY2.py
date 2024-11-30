@@ -2,16 +2,16 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.signal import TransferFunction, bode
 
-# Coeficientes de la función de transferencia
+# Coeficientes de la función de transferencia ajustados
 numerator = [1, 0]  # Numerador: s
-denominator = [200, 1281769]  # Denominador: 200(s + 1281769)
+denominator = [200, 2 * np.pi * 10e5]  # Denominador ajustado para que la frecuencia de corte esté en 10^5 Hz
 
 # Crear la función de transferencia
 system = TransferFunction(numerator, denominator)
 
 # Rango de frecuencias (logarítmico) para análisis
-frequencies = np.logspace(1, 8, 500)  # De 10 Hz a 100 MHz
-w, mag, phase = bode(system, w=frequencies * 2 * np.pi)  # Convertir Hz a rad/s
+frequencies = np.logspace(1, 7, 500)  # De 10 Hz a 100 MHz
+w, mag, phase = bode(system, w=frequencies )  # Convertir Hz a rad/s
 
 # Graficar módulo y fase
 plt.figure(figsize=(12, 8))
