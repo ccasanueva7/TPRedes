@@ -15,8 +15,8 @@ denominator = [
 system = TransferFunction(numerator, denominator)
 
 # Rango de frecuencias (logarítmico) para análisis
-frequencies = np.logspace(1, 8, 500)  # De 10 Hz a 100 MHz
-w, mag, phase = bode(system, w=frequencies * 2 * np.pi)  # Convertir Hz a rad/s
+frequencies = np.logspace(1, 6, 500)  # De 10 Hz a 100 MHz
+w, mag, phase = bode(system, w=frequencies )  # Convertir Hz a rad/s
 
 # Graficar módulo y fase
 plt.figure(figsize=(12, 8))
